@@ -1,23 +1,10 @@
-# rename this file to config.yaml before use. It should reside in the same
-# directory as your python script
-# usernames/passwords are domain specific
+# this is a sample config file showing how to define config parameters for
+# the ddh module. Once valid credentials are defined, the file can live in one
+# of these locations:
+# ~/.ddh_config.yaml (preferred)
+# {module_install_dir}/config.yaml (deprecated)
 datacatalog.worldbank.org:
   user:     YOUR_USERNAME
   password: YOUR_PASSWORD
   # protocol is optional: defaults to https
   protocol: https
-defaults:
-  # use this space to provide script-specific defaults
-  # The values here are used in the eex-transfer.py script
-  host: https://energydata.info
-  target: newdatacatalogstg.worldbank.org
-  max_size: 95
-  group_ref: 143185
-  ttl: 11083 # Jonathan Davidar
-  collab: [23715, 38970] # Jemi & Naichen
-  harvest_src: "EnergyData.info"
-  field_tag: "energydata.info"
-  postfix-subdir: "/sites/default/files/dataset_resources/ddhfiles/public/eex"
-  node_mapping:
-    se4all-database: 94654
-    making-power-affordable-for-africa-and-viable-for-its-utilities: 98073

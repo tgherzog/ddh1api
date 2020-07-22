@@ -1,6 +1,6 @@
 
-import ddh
-import ddh.taxonomy as taxonomy
+import ddh1 as ddh
+import ddh1.taxonomy as taxonomy
 
 import requests
 import copy

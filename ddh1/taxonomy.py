@@ -1,5 +1,5 @@
 
-import ddh
+import ddh1 as ddh
 
 import requests
 import re

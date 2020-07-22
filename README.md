@@ -1,28 +1,17 @@
 
 
-### ddh-fix.py
+# DDH1api
 
-Minor script that demonstrates how to make batch updates to specified DDH records
+DDH1api provides a rudimentary python interface to the World Bank's Development Data Hub (DDH).
+This is designed for internal use by World Bank staff. Previous versions of the module were named
+simply `ddh` and were maintained at https://github.com/tgherzog/pyddh.
 
-### ddh-test.py
+## Installation ##
 
-Low-level module-independent tests for the DDH API
+`pip install git+git://github.com/tgherzog/ddh1api` or
+`pip install git+https://github.com/tgherzog/ddh1api`
 
-### eex-transfer.py
+## Use ##
 
-This is a bespoke script intended to do a one-time export/import from energydata.info to DDH.
-
-### open_datasets.py
-
-Defines "native" (not externally harvested) datasets in DCS, and their partial paths (e.g., dataset/{path}) in DDH
-Some datasets have no path because they were not imported into DDH, for a variety of reasons. This file is derived
-from the curator's google spreadsheet.
-
-### od-catalog-info.py
-
-Obtains the nid and uuid for each DCS dataset's counterpart in DDH, through a combination of scraping and API calls
-
-###  od-compare.py
-
-Compares metadata from DCS and DDH to identify inconsistencies
+`use DDH1api as ddh`
 
