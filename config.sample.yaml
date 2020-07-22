@@ -2,7 +2,7 @@
 # the ddh module. Once valid credentials are defined, the file can live in one
 # of these locations:
 # ~/.ddh_config.yaml (preferred)
-# {module_install_dir}/config.yaml (deprecated)
+# {CWD}/config.yaml (deprecated)
 datacatalog.worldbank.org:
   user:     YOUR_USERNAME
   password: YOUR_PASSWORD
