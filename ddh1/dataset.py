@@ -95,6 +95,47 @@ def get(url, obj_type='node'):
         raise ddh.APIError('get', url, response.text)
 
     
+def field(rec, field):
+    '''Attempts to return a simple field value from the given dataset record
+    '''
+
+    if field in rec and (rec[field] or type(rec[field]) in [int, float]):
+        if type(rec[field]) is dict and rec[field].get('und') and rec[field]['und'][0].get('tid'):
+            return taxonomy.term(field, rec[field]['und'][0]['tid'])
+        elif type(rec[field]) is dict and rec[field].get('und') and rec[field]['und'][0].get('timezone'):
+            value = rec[field]['und'][0].get('value') or None
+            if value:
+                value = datetime.datetime.strptime(value, '%Y-%m-%d %H:%M:%S')
+
+            return value
+
+        elif type(rec[field]) is dict and rec[field].get('und') and 'value' in rec[field]['und'][0]:
+            value = rec[field]['und'][0].get('value') or None
+            return value
+        elif field in ['created', 'changed']:
+            # this could either either formatted or POSIX depending on where the record came from
+            try:
+                return datetime.datetime.fromtimestamp(int(rec[field]))
+            except:
+                return datetime.datetime.strptime(rec[field], '%Y-%m-%d %H:%M:%S')
+
+        elif field in ['field_dataset_ref']:
+            return rec[field]['und'][0]['target_id']
+        elif False and field in ['field_wbddh_dsttl_upi', 'field_wbddh_collaborator_upi']:
+            # disabled for now
+            target = rec[field]['und'][0]['target_id']
+            if target and target not in users:
+                user = get(target, 'user')
+                if user:
+                    users[target] = user['field_wbddh_first_name']['und'][0]['value'] + ' ' + user['field_wbddh_last_name']['und'][0]['value']
+
+            return users.get(target,'')
+        else:
+            # hopefully by now the value is a scalar
+            return rec[field]
+
+    return None
+
 def ds_template():
 
     template = {
