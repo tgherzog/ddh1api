@@ -13,5 +13,5 @@ simply `ddh` and were maintained at https://github.com/tgherzog/pyddh.
 
 ## Use ##
 
-`import ddh1api as ddh`
+`import ddh1 as ddh`
 
