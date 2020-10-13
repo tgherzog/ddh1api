@@ -108,7 +108,7 @@ def load(config):
 
     ddh_terms = {}
     path = config.get('taxonomy_endpoint') or '/api/taxonomy/listvalues'
-    response = requests.get('{}://{}{}'.format(ddh.protocol, ddh.host, path))
+    response = requests.get('{}://{}{}'.format(ddh.protocol, ddh.host, path), verify=ddh.session_verify)
     api_data = response.json()
 
     for elem in api_data:

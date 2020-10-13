@@ -9,7 +9,12 @@ simply `ddh` and were maintained at https://github.com/tgherzog/pyddh.
 ## Installation ##
 
 `pip install git+git://github.com/tgherzog/ddh1api` or
+
 `pip install git+https://github.com/tgherzog/ddh1api`
+
+or download this repository as a ZIP file and install like this:
+
+`pip install Downloads\ddh1api-master.zip`
 
 ## Use ##
 

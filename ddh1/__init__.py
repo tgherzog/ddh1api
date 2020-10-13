@@ -8,6 +8,7 @@ import requests
 ddh_config = {}
 session_key = None
 session_value = None
+session_verify = None
 token = None
 
 host = ''
@@ -40,7 +41,7 @@ class TaxonomyError(Error):
         self.message = '{} is undefined for {}'.format(value, field)
 
 
-def load(host, user=None, pswd=None):
+def load(host, user=None, pswd=None, verify=None):
     '''Load the  module targeted at a specified host. This function is required on startup
 
     Parameters:
@@ -50,11 +51,13 @@ def load(host, user=None, pswd=None):
 
         pswd:  password. Set to None to use the default in config.yaml
 
+        verify: passed to requests to specify SSL certificates, or False to disable
+
     Examples:
         ddh.load('datacatalog.worldbank.org')
     '''
 
-    global ddh_config, session_key, session_value, token, protocol
+    global ddh_config, session_key, session_value, session_verify, token, protocol
 
     globals()['host'] = host
 
@@ -98,6 +101,7 @@ def load(host, user=None, pswd=None):
 
     session_key = json['session_name']
     session_value = json['sessid']
+    session_verify = verify
 
     # request a session token
     url = '{}://{}/services/session/token'.format(protocol, host)

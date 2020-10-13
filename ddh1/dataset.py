@@ -83,7 +83,7 @@ def get(url, obj_type='node'):
     if re.match(r'^\d+$', url):
         url = '{}://{}/api/dataset/{}/{}'.format(ddh.protocol, ddh.host, obj_type, url)
 
-    response = requests.get(url, cookies={ddh.session_key: ddh.session_value})
+    response = requests.get(url, verify=ddh.session_verify, cookies={ddh.session_key: ddh.session_value})
     try:
         result = response.json()
         if type(result) is not dict:
